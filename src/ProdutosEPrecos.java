@@ -1,4 +1,4 @@
-public class ProdutosEPrecos {
+public class ProdutosEPrecos implements Comparable<ProdutosEPrecos>{
 
     private String nomeDoPoduto;
     private double precoProduto;
@@ -23,5 +23,10 @@ public class ProdutosEPrecos {
     @Override
     public String toString() {
         return "Produto: " + getNomeDoPoduto() + "  |||| " + " Preco: " + getPrecoProduto();
+    }
+
+    @Override
+    public int compareTo(ProdutosEPrecos nomeDoProduto) {
+        return this.getNomeDoPoduto().compareTo(nomeDoProduto.getNomeDoPoduto());
     }
 }

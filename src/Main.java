@@ -1,6 +1,4 @@
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -34,15 +32,13 @@ public class Main {
             entradaNomeDoProduto = interfaceUsuario.next();
             compra.setNomeDoPoduto(entradaNomeDoProduto);
 
-
             System.out.println("Preco do produto");
             entradaPrecoProduto = interfaceUsuario.nextDouble();
+            saldoCLiente.setSaldo(entradaSaldo);
             compra.setPrecoProduto(entradaPrecoProduto);
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                                            /// Logica de compra //
-
-
 
             if (saldoCLiente.getSaldo() < compra.getPrecoProduto()) {
                 System.out.println("Saldo indisponivel");
@@ -54,12 +50,17 @@ public class Main {
 
             listaDeProdutosPrecos.add(compra);
 
+            System.out.println("Compra realizada!!");
             System.out.println("Deseja comprar mais itens?");
             System.out.println("[1] Sim    [2] Não");
             paraLooping = interfaceUsuario.nextInt();
 
         }while (paraLooping == 1);
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                      /// Impressão de saida //
+        Collections.sort(listaDeProdutosPrecos);
+        System.out.println(listaDeProdutosPrecos);
         for (ProdutosEPrecos compra: listaDeProdutosPrecos) {
             System.out.println("Produto: " + compra.getNomeDoPoduto() );
             System.out.println("Preço: " + compra.getPrecoProduto());
